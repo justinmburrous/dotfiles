@@ -17,6 +17,7 @@ call vundle#end()
 filetype plugin indent on
 
 syntax on
+setlocal spell spelllang=en_us
 
 set hlsearch
 set ignorecase
