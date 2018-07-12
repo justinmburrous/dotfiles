@@ -17,8 +17,6 @@ call vundle#end()
 filetype plugin indent on
 
 syntax on
-set spell
-set complete+=kspell
 
 set hlsearch
 set ignorecase
