@@ -1,0 +1,52 @@
+#!/bin/bash
+
+set -e
+set -x
+
+echo "Starting install"
+
+SYSTEM_TYPE=$(uname)
+
+function basedir(){
+  dotfile_base_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+  echo $dotfile_base_dir
+}
+
+function brew_install(){
+  echo "Doing Homebrew install"
+  brew_packages="$( basedir )/misc/brew_packages.txt"
+
+  echo "Installing packages from $brew_packages"
+  while read package_name; do
+    echo "Installing: $package_name"
+    brew install $package_name
+  done < $brew_packages
+}
+
+function brew_update(){
+  echo "Updating homebrew"
+  brew update
+  brew doctor
+}
+
+function osx_install(){
+  echo "Running OSX install"
+  brew_update
+  brew_install
+}
+
+function ubuntu_install(){
+  echo "Running Ubuntu install"
+}
+
+if [ $SYSTEM_TYPE == "Linux" ]; then
+  ubuntu_install
+elif [ $SYSTEM_TYPE == "Darwin" ]; then
+  osx_install
+else
+  echo "Unknown uname"
+  exit 1
+fi
+
+echo "Done!"
+
