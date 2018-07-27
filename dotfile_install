@@ -7,9 +7,35 @@ echo "Starting install"
 
 SYSTEM_TYPE=$(uname)
 
+function create_base_directories(){
+  echo "Creating base directories"
+  mkdir -p "$HOME/bin"
+  mkdir -p "$HOME/workspace"
+}
+
 function basedir(){
   dotfile_base_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
   echo $dotfile_base_dir
+}
+
+function configure_fish(){
+  echo "Configuring fish shell"
+  ln -Fs "$( basedir )/fish/config.fish" "$HOME/.config/fish/config.fish"
+}
+
+function configure_git(){
+  echo "Configuring git"
+  git config --global user.name "Justin Burrous"
+  git config --global user.email justinmburrous@gmail.com
+  git config --global core.excludesfile "$HOME/.gitignore_global"
+  git config --global core.editor vim
+  ln -Fs "$( basedir )/git/global_ignore" "$HOME/.gitignore_global"
+}
+
+function symlink_config(){
+  echo "Symlinking config files"
+  configure_fish
+  configure_git
 }
 
 function brew_install(){
@@ -18,8 +44,12 @@ function brew_install(){
 
   echo "Installing packages from $brew_packages"
   while read package_name; do
-    echo "Installing: $package_name"
-    brew install $package_name
+    echo "Checking for package $package_name install status"
+    brew list | grep $package_name
+    if [ $? -ne 0 ]; then
+      echo "Installing: $package_name"
+      brew install $package_name
+    fi
   done < $brew_packages
 }
 
@@ -39,9 +69,16 @@ function ubuntu_install(){
   echo "Running Ubuntu install"
 }
 
+function nix_install(){
+  create_base_directories
+  symlink_config
+}
+
 if [ $SYSTEM_TYPE == "Linux" ]; then
+  nix_install
   ubuntu_install
 elif [ $SYSTEM_TYPE == "Darwin" ]; then
+  nix_install
   osx_install
 else
   echo "Unknown uname"

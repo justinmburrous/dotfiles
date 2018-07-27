@@ -3,7 +3,6 @@ vim
 wget
 git
 htop
-sbt@1
 nmap
 watch
 fish

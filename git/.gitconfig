@@ -1,6 +1,0 @@
-[user]
-	email = justinmburrous@gmail.com
-	name = Justin Burrous
-[core]
-	editor = vim
-	excludesfile = /home/justinmburrous/.gitignore_global
