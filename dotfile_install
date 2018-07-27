@@ -45,7 +45,7 @@ function configure_vim(){
 
 function configure_tmux(){
   echo "Configure tmux"
-  ln -Fs "$( basedir )/tmux/.tmux.conf" "$HOME/.tmux.config"
+  ln -Fs "$( basedir )/tmux/.tmux.conf" "$HOME/.tmux.conf"
 }
 
 function symlink_config(){
