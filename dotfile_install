@@ -32,10 +32,28 @@ function configure_git(){
   ln -Fs "$( basedir )/git/global_ignore" "$HOME/.gitignore_global"
 }
 
+function configure_vim(){
+  echo "Configure vim"
+  VUNDLE_DIR="$HOME/.vim/bundle/Vundle.vim"
+  if [ ! -d $VUNDLE_DIR ]; then
+    echo "Pulling Vundle plugin"
+    git clone https://github.com/VundleVim/Vundle.vim.git
+  fi
+
+  ln -Fs "$( basedir )/vim/.vimrc" "$HOME/.vimrc"
+}
+
+function configure_tmux(){
+  echo "Configure tmux"
+  ln -Fs "$( basedir )/tmux/.tmux.conf" "$HOME/.tmux.config"
+}
+
 function symlink_config(){
   echo "Symlinking config files"
   configure_fish
   configure_git
+  configure_vim
+  configure_tmux
 }
 
 function brew_install(){
