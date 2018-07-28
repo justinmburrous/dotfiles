@@ -11,3 +11,6 @@ pstree
 jq
 tmux
 ack
+gnupg
+curl
+graphviz
