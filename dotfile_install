@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-set -x
+# set -x
 
 echo "Starting install"
 
@@ -62,8 +62,7 @@ function brew_install(){
 
   echo "Installing packages from $brew_packages"
   while read package_name; do
-    echo "Checking for package $package_name install status"
-    brew list | grep $package_name
+    brew list | grep $package_name > /dev/null
     if [ $? -ne 0 ]; then
       echo "Installing: $package_name"
       brew install $package_name
