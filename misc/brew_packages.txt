@@ -14,3 +14,4 @@ ack
 gnupg
 curl
 graphviz
+fossil
