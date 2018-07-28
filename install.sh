@@ -63,7 +63,7 @@ function brew_install(){
   echo "Installing any needed Brew packages"
   set +e # checks for install via exit code
   while read package_name; do
-    brew list | grep $package_name
+    brew list | grep $package_name > /dev/null
     if [ $? -ne 0 ]; then
       echo "Installing: $package_name"
       brew install $package_name
