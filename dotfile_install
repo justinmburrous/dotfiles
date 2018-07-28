@@ -60,14 +60,16 @@ function brew_install(){
   echo "Doing Homebrew install"
   brew_packages="$( basedir )/misc/brew_packages.txt"
 
-  echo "Installing packages from $brew_packages"
+  echo "Installing any needed Brew packages"
+  set +e # checks for install via exit code
   while read package_name; do
-    brew list | grep $package_name > /dev/null
+    brew list | grep $package_name
     if [ $? -ne 0 ]; then
       echo "Installing: $package_name"
       brew install $package_name
     fi
   done < $brew_packages
+  set -e
 }
 
 function brew_update(){
