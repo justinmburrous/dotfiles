@@ -20,7 +20,7 @@ function basedir(){
 
 function configure_fish(){
   echo "Configuring fish shell"
-  ln -Fs "$( basedir )/fish/config.fish" "$HOME/.config/fish/config.fish"
+  ln -fs "$( basedir )/fish/config.fish" "$HOME/.config/fish/config.fish"
 }
 
 function configure_git(){
@@ -29,7 +29,7 @@ function configure_git(){
   git config --global user.email justinmburrous@gmail.com
   git config --global core.excludesfile "$HOME/.gitignore_global"
   git config --global core.editor vim
-  ln -Fs "$( basedir )/git/global_ignore" "$HOME/.gitignore_global"
+  ln -fs "$( basedir )/git/global_ignore" "$HOME/.gitignore_global"
 }
 
 function configure_vim(){
@@ -40,12 +40,12 @@ function configure_vim(){
     git clone https://github.com/VundleVim/Vundle.vim.git
   fi
 
-  ln -Fs "$( basedir )/vim/.vimrc" "$HOME/.vimrc"
+  ln -fs "$( basedir )/vim/.vimrc" "$HOME/.vimrc"
 }
 
 function configure_tmux(){
   echo "Configure tmux"
-  ln -Fs "$( basedir )/tmux/.tmux.conf" "$HOME/.tmux.conf"
+  ln -fs "$( basedir )/tmux/.tmux.conf" "$HOME/.tmux.conf"
 }
 
 function symlink_config(){
