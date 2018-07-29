@@ -1,3 +1,3 @@
 # dotfiles
 
-Collection of justinmburrous dotfiles.
+In-order to install, run ./install.sh

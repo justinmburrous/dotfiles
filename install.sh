@@ -1,0 +1,108 @@
+#!/bin/bash
+
+set -e
+# set -x
+
+echo "Starting install"
+
+SYSTEM_TYPE=$(uname)
+
+function create_base_directories(){
+  echo "Creating base directories"
+  mkdir -p "$HOME/bin"
+  mkdir -p "$HOME/workspace"
+}
+
+function basedir(){
+  dotfile_base_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+  echo $dotfile_base_dir
+}
+
+function configure_fish(){
+  echo "Configuring fish shell"
+  ln -Fs "$( basedir )/fish/config.fish" "$HOME/.config/fish/config.fish"
+}
+
+function configure_git(){
+  echo "Configuring git"
+  git config --global user.name "Justin Burrous"
+  git config --global user.email justinmburrous@gmail.com
+  git config --global core.excludesfile "$HOME/.gitignore_global"
+  git config --global core.editor vim
+  ln -Fs "$( basedir )/git/global_ignore" "$HOME/.gitignore_global"
+}
+
+function configure_vim(){
+  echo "Configure vim"
+  VUNDLE_DIR="$HOME/.vim/bundle/Vundle.vim"
+  if [ ! -d $VUNDLE_DIR ]; then
+    echo "Pulling Vundle plugin"
+    git clone https://github.com/VundleVim/Vundle.vim.git
+  fi
+
+  ln -Fs "$( basedir )/vim/.vimrc" "$HOME/.vimrc"
+}
+
+function configure_tmux(){
+  echo "Configure tmux"
+  ln -Fs "$( basedir )/tmux/.tmux.conf" "$HOME/.tmux.conf"
+}
+
+function symlink_config(){
+  echo "Symlinking config files"
+  configure_fish
+  configure_git
+  configure_vim
+  configure_tmux
+}
+
+function brew_install(){
+  echo "Doing Homebrew install"
+  brew_packages="$( basedir )/misc/brew_packages.txt"
+
+  echo "Installing any needed Brew packages"
+  set +e # checks for install via exit code
+  while read package_name; do
+    brew list | grep $package_name > /dev/null
+    if [ $? -ne 0 ]; then
+      echo "Installing: $package_name"
+      brew install $package_name
+    fi
+  done < $brew_packages
+  set -e
+}
+
+function brew_update(){
+  echo "Updating homebrew"
+  brew update
+  brew doctor
+}
+
+function osx_install(){
+  echo "Running OSX install"
+  brew_update
+  brew_install
+}
+
+function ubuntu_install(){
+  echo "Running Ubuntu install"
+}
+
+function nix_install(){
+  create_base_directories
+  symlink_config
+}
+
+if [ $SYSTEM_TYPE == "Linux" ]; then
+  nix_install
+  ubuntu_install
+elif [ $SYSTEM_TYPE == "Darwin" ]; then
+  nix_install
+  osx_install
+else
+  echo "Unknown uname"
+  exit 1
+fi
+
+echo "Done!"
+
