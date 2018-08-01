@@ -60,7 +60,6 @@ function brew_install(){
   echo "Doing Homebrew install"
   brew_packages="$( basedir )/package_lists/brew_packages.txt"
 
-  echo "Installing any needed Brew packages"
   set +e # checks for install via exit code
   while read package_name; do
     brew list | grep $package_name > /dev/null
@@ -86,6 +85,22 @@ function osx_install(){
 
 function ubuntu_install(){
   echo "Running Ubuntu install"
+
+  sudo apt-get update
+
+  echo "checking $ubuntu_packages list"
+  ubuntu_packages=$( basedir )/package_lists/apt.txt
+
+  set +e
+  while read package_name; do
+    apt list --installed | grep $package_name
+    if [ $? -ne 0 ]; then
+      echo "Installing $package_name"
+      sudo apt-get install -y $package_name
+    fi
+  done < $ubuntu_packages
+
+  set -e
 }
 
 function nix_install(){

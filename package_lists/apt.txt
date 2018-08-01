@@ -1,0 +1,9 @@
+build-essential
+wget
+unzip
+vim
+tree
+tmux
+htop
+fish
+curl
