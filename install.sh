@@ -93,7 +93,7 @@ function ubuntu_install(){
 
   set +e
   while read package_name; do
-    apt list --installed | grep $package_name
+    apt list --installed | grep $package_name > /dev/null
     if [ $? -ne 0 ]; then
       echo "Installing $package_name"
       sudo apt-get install -y $package_name
