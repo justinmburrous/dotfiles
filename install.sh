@@ -58,7 +58,7 @@ function symlink_config(){
 
 function brew_install(){
   echo "Doing Homebrew install"
-  brew_packages="$( basedir )/misc/brew_packages.txt"
+  brew_packages="$( basedir )/package_lists/brew_packages.txt"
 
   echo "Installing any needed Brew packages"
   set +e # checks for install via exit code
