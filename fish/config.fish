@@ -14,3 +14,8 @@ alias gita="git add ."
 alias gitd="git diff"
 alias gitc="git commit"
 alias gits="git status"
+
+# Functions
+function fish_prompt
+  echo "$USER: >> "
+end
