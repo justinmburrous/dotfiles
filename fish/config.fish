@@ -3,10 +3,19 @@ set -x EDITOR vim
 set -x GOPATH ~/workspace/gopath
 set -x PATH $PATH ~/bin
 set -x PATH $PATH $GOPATH/bin
-set -x PATH $PATH /opt/go/bin
-set -x PATH $PATH /opt/sbt/bin
-set -x PATH $PATH /opt/android-studio/bin
-set -x PATH $PATH /opt/goland/bin
+
+# Platform specific config.
+switch (uname)
+case Linux
+  set -x PATH $PATH /opt/go/bin
+  set -x PATH $PATH /opt/sbt/bin
+  set -x PATH $PATH /opt/android-studio/bin
+  set -x PATH $PATH /opt/goland/bin
+case Darwin
+case *
+  echo "Warning, unknown platform detected in fish config. setup"
+end
+
 
 # Aliases
 alias gitca="git commit -a"
