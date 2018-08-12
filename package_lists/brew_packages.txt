@@ -1,4 +1,5 @@
 macvim
+python3
 vim
 wget
 git
