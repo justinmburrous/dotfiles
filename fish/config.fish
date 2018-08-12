@@ -16,7 +16,6 @@ case *
   echo "Warning, unknown platform detected in fish config. setup"
 end
 
-
 # Aliases
 alias gitca="git commit -a"
 alias gita="git add ."
@@ -26,5 +25,5 @@ alias gits="git status"
 
 # Functions
 function fish_prompt
-  echo "$USER: >> "
+  echo -e $USER ":" (basename $PWD) "\n> "
 end
