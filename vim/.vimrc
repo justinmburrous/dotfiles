@@ -12,6 +12,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'miyakogi/conoline.vim'
 
 call vundle#end()
 filetype plugin indent on
