@@ -22,6 +22,7 @@ syntax on
 setlocal spell spelllang=en_us
 
 set hlsearch
+set incsearch
 set ignorecase
 set smartcase
 set ruler
