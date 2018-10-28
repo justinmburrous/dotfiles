@@ -35,3 +35,5 @@ set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 set splitright
 set splitbelow
 set shell=/bin/bash
+
+let g:gitgutter_enabled = 1
