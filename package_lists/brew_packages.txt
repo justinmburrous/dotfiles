@@ -17,3 +17,4 @@ curl
 graphviz
 fossil
 go
+fpp
