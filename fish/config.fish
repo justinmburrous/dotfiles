@@ -11,6 +11,7 @@ case Linux
   set -x PATH $PATH /opt/sbt/bin
   set -x PATH $PATH /opt/android-studio/bin
   set -x PATH $PATH /opt/goland/bin
+  set -x PATH $PATH /opt/protoc/bin
 case Darwin
 case *
   echo "Warning, unknown platform detected in fish config. setup"
