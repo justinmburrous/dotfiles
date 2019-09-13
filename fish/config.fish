@@ -5,6 +5,7 @@ set -x PATH $PATH ~/bin
 set -x PATH $PATH $GOPATH/bin
 set -x PATH $PATH ~/.npm-packages/bin
 set -x PATH $PATH ~/.cargo/bin
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 # Platform specific config.
 switch (uname)
@@ -38,3 +39,4 @@ function clear
     /usr/bin/clear
   end
 end
+
