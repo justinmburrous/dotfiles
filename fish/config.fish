@@ -30,3 +30,11 @@ alias gits="git status"
 function fish_prompt
   echo -e $USER ":" (basename $PWD) "\n> "
 end
+
+function clear
+  if test (random 0 1000) = 0
+    sl
+  else
+    /usr/bin/clear
+  end
+end
