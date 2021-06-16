@@ -15,6 +15,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'miyakogi/conoline.vim'
 Plugin 'fatih/vim-go'
 Plugin 'scrooloose/nerdtree'
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 filetype plugin indent on
