@@ -3,7 +3,6 @@ wget
 unzip
 vim
 neovim
-tree
 tmux
 htop
 tree
