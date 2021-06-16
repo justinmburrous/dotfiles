@@ -4,6 +4,7 @@ set -x GOPATH ~/workspace/gopath
 set -x PATH $PATH ~/bin
 set -x PATH $PATH $GOPATH/bin
 set -x PATH $PATH ~/.npm-packages/bin
+set -x PATH $PATH ~/.cargo/bin
 
 # Platform specific config.
 switch (uname)
