@@ -1,8 +1,14 @@
+<<<<<<< HEAD
 ack
 curl
 fish
 fossil
 fpp
+=======
+python@3
+vim
+wget
+>>>>>>> bd9fff6 (cleanup install helper)
 git
 gnupg
 go

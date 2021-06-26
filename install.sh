@@ -69,25 +69,24 @@ function brew_install(){
   brew_packages="$( basedir )/package_lists/brew_packages.txt"
 
   set +e # checks for install via exit code
+  BREW_INSTALLED_PACKAGES=$(brew list)
   while read package_name; do
-    brew list | grep $package_name > /dev/null
-    if [ $? -ne 0 ]; then
+    echo $BREW_INSTALLED_PACKAGES | grep $package_name > /dev/null
+    if [ $? -ne 0 ];
+    then
       echo "Installing: $package_name"
       brew install $package_name
+    else
+      echo "$package_name already installed"
     fi
   done < $brew_packages
   set -e
 }
 
-function brew_update(){
+function osx_install(){
   echo "Updating homebrew"
   brew update
   brew doctor
-}
-
-function osx_install(){
-  echo "Running OSX install"
-  brew_update
   brew_install
 }
 
