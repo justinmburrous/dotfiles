@@ -43,6 +43,13 @@ function configure_vim(){
   ln -fs "$( basedir )/vim/.vimrc" "$HOME/.vimrc"
 }
 
+function configure_nvim(){
+  echo "Configuring nvim"
+  mkdir -p ~/.config/nvim
+  ln -fs "$( basedir )/nvim/init.vim" "$HOME/.config/nvim/init.vim"
+}
+
+
 function configure_tmux(){
   echo "Configure tmux"
   ln -fs "$( basedir )/tmux/.tmux.conf" "$HOME/.tmux.conf"
@@ -53,6 +60,7 @@ function symlink_config(){
   configure_fish
   configure_git
   configure_vim
+  configure_nvim
   configure_tmux
 }
 
