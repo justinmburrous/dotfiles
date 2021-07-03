@@ -39,3 +39,8 @@ set splitbelow
 set shell=/bin/bash
 
 let g:gitgutter_enabled = 1
+
+hi clear SpellBad
+hi SpellBad cterm=underline,bold ctermfg=red
+" Set style for gVim
+hi SpellBad gui=undercurl
