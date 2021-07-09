@@ -51,7 +51,7 @@ function configure_nvim(){
 
 
 function configure_tmux(){
-  echo "Configure tmux"
+  echo "Configure Tmux"
   ln -fs "$( basedir )/tmux/.tmux.conf" "$HOME/.tmux.conf"
 }
 
@@ -84,7 +84,7 @@ function brew_install(){
 }
 
 function osx_install(){
-  echo "Updating homebrew"
+  echo "Updating Homebrew"
   brew update
   brew doctor
   brew_install
@@ -99,11 +99,14 @@ function ubuntu_install(){
   ubuntu_packages=$( basedir )/package_lists/apt.txt
 
   set +e
+  APT_INSTALLED_PACKAGES=$(apt list --installed)
   while read package_name; do
-    apt list --installed | grep $package_name > /dev/null
+    echo $APT_INSTALLED_PACKAGES | grep $package_name > /dev/null
     if [ $? -ne 0 ]; then
       echo "Installing $package_name"
       sudo apt-get install -y $package_name
+    else
+      echo "$package_name already installed"
     fi
   done < $ubuntu_packages
 
@@ -127,4 +130,3 @@ else
 fi
 
 echo "Done!"
-
