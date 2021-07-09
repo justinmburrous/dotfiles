@@ -51,3 +51,6 @@ set timeoutlen=1000 ttimeoutlen=10
 
 " Set CTRLP to search all project modules
 let g:ctrlp_working_path_mode = ''
+
+" Show hidden files with NERDTree
+let NERDTreeShowHidden=1
