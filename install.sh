@@ -71,7 +71,7 @@ function brew_install(){
   set +e # checks for install via exit code
   BREW_INSTALLED_PACKAGES=$(brew list)
   while read package_name; do
-    echo $BREW_INSTALLED_PACKAGES | grep $package_name > /dev/null
+    echo $BREW_INSTALLED_PACKAGES | grep -w $package_name > /dev/null
     if [ $? -ne 0 ];
     then
       echo "Installing: $package_name"
@@ -101,7 +101,7 @@ function ubuntu_install(){
   set +e
   APT_INSTALLED_PACKAGES=$(apt list --installed)
   while read package_name; do
-    echo $APT_INSTALLED_PACKAGES | grep $package_name > /dev/null
+    echo $APT_INSTALLED_PACKAGES | grep -w $package_name > /dev/null
     if [ $? -ne 0 ]; then
       echo "Installing $package_name"
       sudo apt-get install -y $package_name
