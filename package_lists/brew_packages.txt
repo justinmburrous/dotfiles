@@ -4,7 +4,6 @@ fish
 fossil
 fpp
 python@3
-vim
 wget
 git
 gnupg
@@ -20,6 +19,6 @@ python3
 sl
 tmux
 tree
-vim
 watch
 wget
+gh
