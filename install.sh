@@ -28,7 +28,7 @@ function configure_git(){
   git config --global user.name "Justin Burrous"
   git config --global user.email justinmburrous@gmail.com
   git config --global core.excludesfile "$HOME/.gitignore_global"
-  git config --global core.editor vim
+  git config --global core.editor nvim
   ln -fs "$( basedir )/git/global_ignore" "$HOME/.gitignore_global"
 }
 
@@ -40,7 +40,7 @@ function configure_vim(){
     git clone https://github.com/VundleVim/Vundle.vim.git
   fi
 
-  ln -fs "$( basedir )/vim/.vimrc" "$HOME/.vimrc"
+  ln -fs "$( basedir )/vim/vimrc" "$HOME/.vimrc"
 }
 
 function configure_nvim(){
@@ -52,7 +52,7 @@ function configure_nvim(){
 
 function configure_tmux(){
   echo "Configure Tmux"
-  ln -fs "$( basedir )/tmux/.tmux.conf" "$HOME/.tmux.conf"
+  ln -fs "$( basedir )/tmux/tmux.conf" "$HOME/.tmux.conf"
 }
 
 function symlink_config(){
