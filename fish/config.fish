@@ -26,6 +26,7 @@ alias gita="git add ."
 alias gitd="git diff"
 alias gitc="git commit"
 alias gits="git status"
+alias gitl="git log --pretty=oneline"
 
 # Functions
 function fish_prompt
