@@ -1,5 +1,6 @@
 ack
 the_silver_searcher
+v8
 curl
 fish
 fossil
