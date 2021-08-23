@@ -29,6 +29,7 @@ function configure_git(){
   git config --global user.email justinmburrous@gmail.com
   git config --global core.excludesfile "$HOME/.gitignore_global"
   git config --global core.editor nvim
+  git config --global init.defaultBranch main
   ln -fs "$( basedir )/git/global_ignore" "$HOME/.gitignore_global"
 }
 
