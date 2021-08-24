@@ -51,13 +51,13 @@ function git
     set remote $argv[2]
 
     if string match -r 'github.com' $remote
-      eval $gitbin clone -o 'github' "$argv[2]"
+      $gitbin clone -o 'github' "$argv[2]"
     else
-      eval $gitbin clone remote
+      $gitbin clone remote
     end
 
   # Normal operations
   else
-    eval $gitbin $argv
+    $gitbin $argv
   end
 end
