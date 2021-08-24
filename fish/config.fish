@@ -41,3 +41,23 @@ function clear
   end
 end
 
+# Wrapper around git functions
+function git
+  set gitbin (which git)
+  set subcmd $argv[1]
+
+  # Set remote to 'github' when repo is clones from Github
+  if string match $subcmd "clone"
+    set remote $argv[2]
+
+    if string match -r 'github.com' $remote
+      eval $gitbin clone -o 'github' "$argv[2]"
+    else
+      eval $gitbin clone remote
+    end
+
+  # Normal operations
+  else
+    eval $gitbin $argv
+  end
+end
