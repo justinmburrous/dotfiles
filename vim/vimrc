@@ -38,6 +38,7 @@ set splitright
 set splitbelow
 set shell=/bin/bash
 set encoding=utf-8
+set updatetime=100 # helpfull for git gutter
 
 " Code folding
 set foldmethod=indent
