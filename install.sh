@@ -51,6 +51,16 @@ function configure_nvim(){
 }
 
 
+function install_scripts(){
+  echo "Installing scripts"
+  for f in ./scripts/*; do
+    ln -fs "$( basedir )/scripts/$(basename $f)" "$HOME/bin/$(basename $f)"
+  done
+
+  exit 1
+
+}
+
 function configure_tmux(){
   echo "Configure Tmux"
   ln -fs "$( basedir )/tmux/tmux.conf" "$HOME/.tmux.conf"
@@ -117,6 +127,7 @@ function ubuntu_install(){
 function nix_install(){
   create_base_directories
   symlink_config
+  install_scripts
 }
 
 if [ $SYSTEM_TYPE == "Linux" ]; then
