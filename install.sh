@@ -56,9 +56,6 @@ function install_scripts(){
   for f in ./scripts/*; do
     ln -fs "$( basedir )/scripts/$(basename $f)" "$HOME/bin/$(basename $f)"
   done
-
-  exit 1
-
 }
 
 function configure_tmux(){
