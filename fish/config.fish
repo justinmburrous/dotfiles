@@ -61,3 +61,5 @@ function git
     $gitbin $argv
   end
 end
+
+set -x KUBECONFIG $HOME/.kube/pinode
