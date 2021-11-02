@@ -10,6 +10,7 @@ wget
 git
 gnupg
 go
+mosh
 node
 graphviz
 htop
