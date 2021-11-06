@@ -7,6 +7,9 @@ set -x PATH $PATH ~/.npm-packages/bin
 set -x PATH $PATH ~/.cargo/bin
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
+# Keyboard re-map
+setxkbmap -option caps:escape
+
 # Platform specific config.
 switch (uname)
 case Linux
