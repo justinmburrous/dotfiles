@@ -67,3 +67,7 @@ function git
 end
 
 set -x KUBECONFIG $HOME/.kube/pinode
+
+# Turn off shell greeting
+set fish_greeting
+
