@@ -61,6 +61,7 @@ let g:ctrlp_working_path_mode = ''
 
 " Show hidden files with NERDTree
 let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.git$']
 
 " https://thoughtbot.com/blog/faster-grepping-in-vim
 " The Silver Searcher
