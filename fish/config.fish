@@ -8,7 +8,9 @@ set -x PATH $PATH ~/.cargo/bin
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 
 # Keyboard re-map
-setxkbmap -option caps:escape
+if [ (uname) = "Linux" ];
+  setxkbmap -option caps:escape
+end
 
 # Platform specific config.
 switch (uname)
