@@ -63,6 +63,11 @@ function configure_tmux(){
   ln -fs "$( basedir )/tmux/tmux.conf" "$HOME/.tmux.conf"
 }
 
+function configure_ssh(){
+  echo "Configuring SSH"
+  ln -fs "$( basedir )/ssh/config" "$HOME/.ssh/config"
+}
+
 function symlink_config(){
   echo "Symlinking config files"
   configure_fish
@@ -70,6 +75,7 @@ function symlink_config(){
   configure_vim
   configure_nvim
   configure_tmux
+  configure_ssh
 }
 
 function brew_install(){
