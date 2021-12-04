@@ -32,7 +32,7 @@ alias gitd="git diff"
 alias gitc="git commit"
 alias gits="git status"
 alias gitl="git log --pretty=oneline"
-alias kube="kubectl"
+alias k="kubectl"
 
 # Functions
 function fish_prompt
