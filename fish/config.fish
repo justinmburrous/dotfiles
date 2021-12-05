@@ -64,6 +64,23 @@ function git
     end
 
   # Normal operations
+  else if string match $subcmd "backup"
+    set current_branch (git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+
+    set timestamp (date '+%Y-%m-%d-%H-%M-%S')
+    set backup_branch "$current_branch-backup-$timestamp"
+    git checkout -b $backup_branch
+
+
+    git add .
+    git commit -m "backup-$timestamp"
+    if string match (git remote show) "github"
+      echo "github remote set, pushing"
+      git push github $backup_branch
+    else
+      echo "unknown remote set, skipping"
+    end
+
   else
     $gitbin $argv
   end
