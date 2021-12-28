@@ -30,6 +30,9 @@ set ignorecase
 set smartcase
 set ruler
 set colorcolumn=100
+color desert
+set cursorline
+hi CursorLine term=bold cterm=bold guibg=Grey40
 set visualbell
 set backspace=indent,eol,start
 set number relativenumber
