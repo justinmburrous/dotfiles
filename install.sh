@@ -58,6 +58,23 @@ function install_scripts(){
   done
 }
 
+function configure_tpm(){
+  echo "Configuring TMUX plugin manager (TPM)"
+  if [ -d ~/.tmux/plugins/tpm ]
+  then
+    echo "TPM already installed"
+  else
+    echo "Will install TPM"
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  fi
+
+  echo "Updating TPM plugins"
+  # Install, update, clean plugins
+  ~/.tmux/plugins/tpm/bin/install_plugins
+  ~/.tmux/plugins/tpm/bin/update_plugins all
+  ~/.tmux/plugins/tpm/bin/clean_plugins
+}
+
 function configure_tmux(){
   echo "Configure Tmux"
   ln -fs "$( basedir )/tmux/tmux.conf" "$HOME/.tmux.conf"
@@ -141,6 +158,7 @@ function nix_install(){
   create_base_directories
   symlink_config
   install_scripts
+  configure_tpm
 }
 
 if [ $SYSTEM_TYPE == "Linux" ]; then
