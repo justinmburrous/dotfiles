@@ -21,6 +21,26 @@ function basedir(){
 function configure_fish(){
   echo "Configuring fish shell"
   ln -fs "$( basedir )/fish/config.fish" "$HOME/.config/fish/config.fish"
+
+  if [ $SYSTEM_TYPE == "Linux" ]; then
+    FISH_SHELL_PATH="/usr/bin/fish"
+  elif [ $SYSTEM_TYPE == "Darwin" ]; then
+    FISH_SHELL_PATH="/usr/local/bin/fish"
+  else
+    echo "Unknown uname, exiting fish shell install"
+    exit 1
+  fi
+
+  echo "FISH SHELL PATH IS $FISH_SHELL_PATH"
+  if grep "$FISH_SHELL_PATH" /etc/shells;
+  then
+    echo "fish shell $FISH_SHELL_PATH already in /etc/shells"
+  else
+    echo "Adding fish shell $FISH_SHELL_PATH to /etc/shells"
+    sudo bash -c "echo $FISH_SHELL_PATH >> /etc/shells"
+  fi
+
+  chsh -s $FISH_SHELL_PATH
 }
 
 function configure_git(){
