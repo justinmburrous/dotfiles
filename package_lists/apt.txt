@@ -1,5 +1,6 @@
 ack
 build-essential
+software-properties-common
 net-tools
 curl
 fish

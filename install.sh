@@ -109,10 +109,20 @@ function ubuntu_install(){
 
   sudo apt-get update
 
+  echo "installing PPAs list"
+  ppa_list=$( basedir )/package_lists/ppa_list.txt
+
+  set +e
+  while read ppa_repo; do
+    echo "Adding $ppa_repo"
+    sudo add-apt-repository $ppa_repo
+  done < $ppa_list
+
+  sudo apt-get update
+
   echo "checking $ubuntu_packages list"
   ubuntu_packages=$( basedir )/package_lists/apt.txt
 
-  set +e
   APT_INSTALLED_PACKAGES=$(apt list --installed)
   while read package_name; do
     echo $APT_INSTALLED_PACKAGES | grep -w $package_name > /dev/null
