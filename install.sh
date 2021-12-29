@@ -31,7 +31,6 @@ function configure_fish(){
     exit 1
   fi
 
-  echo "FISH SHELL PATH IS $FISH_SHELL_PATH"
   if grep "$FISH_SHELL_PATH" /etc/shells;
   then
     echo "fish shell $FISH_SHELL_PATH already in /etc/shells"
