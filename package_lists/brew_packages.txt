@@ -15,7 +15,7 @@ node
 graphviz
 htop
 jq
-macvim
+vim
 nmap
 pstree
 python3
