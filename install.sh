@@ -39,7 +39,12 @@ function configure_fish(){
     sudo bash -c "echo $FISH_SHELL_PATH >> /etc/shells"
   fi
 
-  chsh -s $FISH_SHELL_PATH
+  if [ $SHELL = $FISH_SHELL_PATH ]; then
+    echo "fish shell already configured"
+  else
+    echo "setting fish shell path to $FISH_SHELL_PATH"
+    chsh -s $FISH_SHELL_PATH
+  fi
 }
 
 function configure_git(){
@@ -72,7 +77,6 @@ function configure_nvim(){
   mkdir -p ~/.config/nvim
   ln -fs "$( basedir )/nvim/init.vim" "$HOME/.config/nvim/init.vim"
 }
-
 
 function install_scripts(){
   echo "Installing scripts"
