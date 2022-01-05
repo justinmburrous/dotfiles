@@ -16,6 +16,7 @@ graphviz
 htop
 jq
 vim
+neovim
 nmap
 pstree
 python3

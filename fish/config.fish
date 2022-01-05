@@ -1,5 +1,6 @@
 #Env
 set -x EDITOR vim
+set PATH /opt/homebrew/sbin /opt/homebrew/bin $PATH # Used for M1 Mac
 set -x GOPATH ~/workspace/gopath
 set -x PATH $PATH ~/bin
 set -x PATH $PATH $GOPATH/bin

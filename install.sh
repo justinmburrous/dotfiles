@@ -6,6 +6,7 @@ set -e
 echo "Starting install"
 
 SYSTEM_TYPE=$(uname)
+ARCH_TYPE="$(uname -p)"
 
 function create_base_directories(){
   echo "Creating base directories"
@@ -24,8 +25,18 @@ function configure_fish(){
 
   if [ $SYSTEM_TYPE == "Linux" ]; then
     FISH_SHELL_PATH="/usr/bin/fish"
+
   elif [ $SYSTEM_TYPE == "Darwin" ]; then
-    FISH_SHELL_PATH="/usr/local/bin/fish"
+    # check OSX platform
+    if [ $ARCH_TYPE == "i386" ]; then
+      FISH_SHELL_PATH="/usr/local/bin/fish"
+    elif [ $ARCH_TYPE == "arm" ]; then
+      FISH_SHELL_PATH="/opt/homebrew/bin/fish"
+    else
+      echo "Unknown arch. exiting fish shell install"
+      exit 1
+    fi
+
   else
     echo "Unknown uname, exiting fish shell install"
     exit 1
@@ -62,7 +73,7 @@ function configure_vim(){
   VUNDLE_DIR="$HOME/.vim/bundle/Vundle.vim"
   if [ ! -d $VUNDLE_DIR ]; then
     echo "Pulling Vundle plugin"
-    git clone https://github.com/VundleVim/Vundle.vim.git
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
   fi
 
   ln -fs "$( basedir )/vim/vimrc" "$HOME/.vimrc"
@@ -123,30 +134,28 @@ function symlink_config(){
 }
 
 function brew_install(){
+  echo "Updating homebrew"
+  brew update
+
   echo "Doing Homebrew install"
-  brew_packages="$( basedir )/package_lists/brew_packages.txt"
+  BREW_DESIRED_PACKAGES="$( basedir )/package_lists/brew_packages.txt"
 
   set +e # checks for install via exit code
   BREW_INSTALLED_PACKAGES=$(brew list)
   while read package_name; do
-    echo $BREW_INSTALLED_PACKAGES | grep -w $package_name > /dev/null
-    if [ $? -ne 0 ];
-    then
+    if brew ls --versions $package_name; then
+      echo "$package_name already installed"
+    else
       echo "Installing: $package_name"
       brew install $package_name
-    else
-      echo "$package_name already installed"
     fi
-  done < $brew_packages
+  done < $BREW_DESIRED_PACKAGES
   set -e
+
+  echo "Running brew doctor"
+  brew doctor
 }
 
-function osx_install(){
-  echo "Updating Homebrew"
-  brew update
-  brew doctor
-  brew_install
-}
 
 function ubuntu_install(){
   echo "Running Ubuntu install"
@@ -189,13 +198,13 @@ function nix_install(){
 }
 
 if [ $SYSTEM_TYPE == "Linux" ]; then
-  nix_install
   ubuntu_install
-elif [ $SYSTEM_TYPE == "Darwin" ]; then
   nix_install
-  osx_install
+elif [ $SYSTEM_TYPE == "Darwin" ]; then
+  brew_install
+  nix_install
 else
-  echo "Unknown uname"
+  echo "Unknown uname $SYSTEM_TYPE"
   exit 1
 fi
 
