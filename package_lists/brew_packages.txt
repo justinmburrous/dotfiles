@@ -19,6 +19,7 @@ vim
 neovim
 nmap
 pstree
+tree
 python3
 sl
 tmux
