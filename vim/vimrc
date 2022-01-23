@@ -17,6 +17,7 @@ Plugin 'fatih/vim-go'
 Plugin 'scrooloose/nerdtree'
 Plugin 'rust-lang/rust.vim'
 Plugin 'ycm-core/YouCompleteMe'
+Plugin 'pangloss/vim-javascript'
 
 call vundle#end()
 filetype plugin indent on
