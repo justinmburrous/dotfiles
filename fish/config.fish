@@ -6,6 +6,7 @@ set -x PATH $PATH ~/bin
 set -x PATH $PATH $GOPATH/bin
 set -x PATH $PATH ~/.npm-packages/bin
 set -x PATH $PATH ~/.cargo/bin
+set -x PATH $PATH ~/bin
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 set -x KUBE_EDITOR "nvim"
 
