@@ -1,5 +1,6 @@
 ack
 the_silver_searcher
+fzf
 v8
 curl
 fish

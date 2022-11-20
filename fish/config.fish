@@ -51,6 +51,12 @@ function clear
   end
 end
 
+function ws
+  # Fuzzy search workspace, go there
+  cd "$HOME/workspace"
+  cd (ls | fzf)
+end
+
 # Wrapper around git functions
 function git
   set gitbin (which git)
