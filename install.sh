@@ -123,14 +123,11 @@ function configure_ssh(){
   ln -fs "$( basedir )/ssh/config" "$HOME/.ssh/config"
 }
 
-function symlink_config(){
-  echo "Symlinking config files"
-  configure_fish
-  configure_git
-  configure_vim
-  configure_nvim
-  configure_tmux
-  configure_ssh
+function configure_ssh(){
+  echo "Configuring NPM"
+  npm set init-author-email "justinmburrous@gmail.com"
+  npm set init-author-name "justinmburrous"
+  npm set init-license "MIT"
 }
 
 function brew_install(){
@@ -192,7 +189,13 @@ function ubuntu_install(){
 
 function nix_install(){
   create_base_directories
-  symlink_config
+  configure_fish
+  configure_git
+  configure_vim
+  configure_nvim
+  configure_tmux
+  configure_ssh
+  configure_npm
   install_scripts
   configure_tpm
 }
