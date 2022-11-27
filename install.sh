@@ -128,6 +128,7 @@ function configure_ssh(){
   npm set init-author-email "justinmburrous@gmail.com"
   npm set init-author-name "justinmburrous"
   npm set init-license "MIT"
+  npm set prefix "~/.npm-packages"
 }
 
 function brew_install(){
