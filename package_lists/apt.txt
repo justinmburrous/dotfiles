@@ -1,5 +1,7 @@
 ack
 build-essential
+openssh-server
+sudo
 software-properties-common
 net-tools
 curl
@@ -9,6 +11,7 @@ graphviz
 htop
 jq
 mosh
+git
 neovim
 nmap
 python3

@@ -158,7 +158,7 @@ function brew_install(){
 function ubuntu_install(){
   echo "Running Ubuntu install"
 
-  sudo apt-get update
+  sudo apt-get update -y
 
   echo "installing PPAs list"
   ppa_list=$( basedir )/package_lists/ppa_list.txt
@@ -169,7 +169,7 @@ function ubuntu_install(){
     sudo add-apt-repository $ppa_repo
   done < $ppa_list
 
-  sudo apt-get update
+  sudo apt-get update -y
 
   echo "checking $ubuntu_packages list"
   ubuntu_packages=$( basedir )/package_lists/apt.txt
@@ -184,6 +184,8 @@ function ubuntu_install(){
       echo "$package_name already installed"
     fi
   done < $ubuntu_packages
+
+  sudo apt-get upgrade -y
 
   set -e
 }
