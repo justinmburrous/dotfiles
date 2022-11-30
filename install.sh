@@ -21,6 +21,7 @@ function basedir(){
 
 function configure_fish(){
   echo "Configuring fish shell"
+  mkdir -p "$HOME/.config/fish"
   ln -fs "$( basedir )/fish/config.fish" "$HOME/.config/fish/config.fish"
 
   if [ $SYSTEM_TYPE == "Linux" ]; then
