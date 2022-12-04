@@ -1,4 +1,5 @@
 ack
+nodejs
 build-essential
 openssh-server
 sudo
