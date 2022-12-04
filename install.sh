@@ -124,7 +124,7 @@ function configure_ssh(){
   ln -fs "$( basedir )/ssh/config" "$HOME/.ssh/config"
 }
 
-function configure_ssh(){
+function configure_npm(){
   echo "Configuring NPM"
   npm set init-author-email "justinmburrous@gmail.com"
   npm set init-author-name "justinmburrous"
