@@ -121,6 +121,7 @@ function configure_tmux(){
 
 function configure_ssh(){
   echo "Configuring SSH"
+  mkdir -p "$HOME/.ssh/"
   ln -fs "$( basedir )/ssh/config" "$HOME/.ssh/config"
 }
 

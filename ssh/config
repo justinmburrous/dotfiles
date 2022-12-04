@@ -1,5 +1,2 @@
-Host kube*
-  User ubuntu
-
 Host octopi
   User pi
