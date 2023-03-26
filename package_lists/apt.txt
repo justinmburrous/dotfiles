@@ -10,6 +10,7 @@ curl
 fish
 gnupg
 graphviz
+fzf
 htop
 jq
 mosh
