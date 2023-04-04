@@ -103,5 +103,5 @@ end
 set -x KUBECONFIG $HOME/.kube/pinode
 
 # Turn off shell greeting
-set fish_greeting
+set -U fish_greeting "🐟"
 
