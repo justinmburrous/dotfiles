@@ -102,8 +102,6 @@ function nvm
   bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
 end
 
-set -x KUBECONFIG $HOME/.kube/pinode
-
 # Turn off shell greeting
 set -U fish_greeting "🐟"
 
