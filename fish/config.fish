@@ -8,6 +8,7 @@ set -x PATH $PATH ~/.npm-packages/bin
 set -x PATH $PATH ~/.cargo/bin
 set -x PATH $PATH ~/bin
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+fish_add_path /opt/homebrew/opt/openjdk/bin
 set -x KUBE_EDITOR "nvim"
 
 # Keyboard re-map
