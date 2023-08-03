@@ -27,3 +27,4 @@ unzip
 vim
 wget
 socat
+ruby
