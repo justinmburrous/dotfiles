@@ -105,3 +105,5 @@ end
 # Turn off shell greeting
 set -U fish_greeting "🐟"
 
+# CDK
+set -x JSII_SILENCE_WARNING_UNTESTED_NODE_VERSION 1
