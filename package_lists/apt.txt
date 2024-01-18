@@ -28,3 +28,4 @@ vim
 wget
 socat
 ruby
+x11-xkb-utils
