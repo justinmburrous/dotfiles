@@ -42,7 +42,7 @@ alias k="kubectl"
 
 # Functions
 function fish_prompt
-  echo -e $USER ":" (basename $PWD) "\n> "
+  echo -e $USER"@"(hostname)":"(basename $PWD) "\n> "
 end
 
 function clear
