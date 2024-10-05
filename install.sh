@@ -139,15 +139,20 @@ function configure_npm(){
   ln -fs "$( basedir )/nodejs/npmrc" "$HOME/.npmrc"
 }
 
+function configure_rust(){
+  echo "Installing and configuring rust"
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+}
+
 function configure_node_version_manager(){
   echo "Configuring Node Version Manager (NVM)"
   # Note: This uses the nvm function with fish and Bass to work, see fish config
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
-  fish -c "nvm install v18.12.1"
-  fish -c "nvm install v16.19.0"
-  fish -c "nvm install v14.21.2"
-  fish -c "nvm install v12.22.12"
+  fish -c "nvm install v22"
+  fish -c "nvm install v20"
+  fish -c "nvm install v18"
+  fish -c "nvm install v16"
 }
 
 function brew_install(){
@@ -219,6 +224,7 @@ function nix_install(){
   configure_ssh
   configure_npm
   configure_node_version_manager
+  configure_rust
   install_scripts
   configure_tpm
 }
