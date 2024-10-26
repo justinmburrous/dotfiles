@@ -1,7 +1,7 @@
 [user]
 	name = Justin Burrous
 	email = justinmburrous@gmail.com
-	signingkey = 47525E47D072CF16!
+	signingkey = 6F24BCA624F016BE!
 [core]
 	excludesfile = /Users/justinmburrous/.gitignore_global
 	editor = nvim
