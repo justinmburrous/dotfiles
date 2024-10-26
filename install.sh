@@ -70,11 +70,7 @@ function configure_fish(){
 
 function configure_git(){
   echo "Configuring git"
-  git config --global user.name "Justin Burrous"
-  git config --global user.email justinmburrous@gmail.com
-  git config --global core.excludesfile "$HOME/.gitignore_global"
-  git config --global core.editor nvim
-  git config --global init.defaultBranch main
+  ln -fs "$( basedir )/git/gitconfig" "$HOME/.gitconfig"
   ln -fs "$( basedir )/git/global_ignore" "$HOME/.gitignore_global"
 }
 

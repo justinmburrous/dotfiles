@@ -1,0 +1,16 @@
+[user]
+	name = Justin Burrous
+	email = justinmburrous@gmail.com
+	signingkey = 47525E47D072CF16!
+[core]
+	excludesfile = /Users/justinmburrous/.gitignore_global
+	editor = nvim
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[commit]
+	gpgsign = true
