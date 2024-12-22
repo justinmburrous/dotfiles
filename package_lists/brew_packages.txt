@@ -29,4 +29,3 @@ watch
 wget
 gh
 ruby
-ruby-dev
