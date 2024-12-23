@@ -10,6 +10,7 @@ set -x PATH $PATH ~/bin
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 fish_add_path /opt/homebrew/opt/openjdk/bin
 set -x KUBE_EDITOR "nvim"
+set -gx GPG_TTY (tty)
 
 # Platform specific config.
 switch (uname)
