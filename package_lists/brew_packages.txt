@@ -29,3 +29,4 @@ watch
 wget
 gh
 ruby
+cmake

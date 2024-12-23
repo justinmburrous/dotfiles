@@ -83,3 +83,10 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " bind \ (backward slash) to grep shortcut
 command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
+
+" Setup python venv for vim
+if has('mac')
+let g:python3_host_prog='/Users/justinmburrous/.venv/neovim/bin/python3'
+elseif has('unix')
+let g:python3_host_prog='/home/justinmburrous/.venv/neovim/bin/python3'
+endif

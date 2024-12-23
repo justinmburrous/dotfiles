@@ -93,6 +93,20 @@ function configure_nvim(){
   echo "Configuring nvim"
   mkdir -p ~/.config/nvim
   ln -fs "$( basedir )/nvim/init.vim" "$HOME/.config/nvim/init.vim"
+
+  echo "Setting up venv for nvim"
+  python3 -m venv ~/.venv/neovim
+  . ~/.venv/neovim/bin/activate
+  pip3 install --upgrade pynvim
+  deactivate
+}
+
+function configure_aws_cli(){
+  echo "Setup AWS cli & boto3"
+  python3 -m venv ~/.venv/aws
+  . ~/.venv/neovim/bin/activate
+  pip3 install --upgrade awscli boto3 botocore
+  deactivate
 }
 
 function install_scripts(){
@@ -216,6 +230,7 @@ function nix_install(){
   configure_git
   configure_vim
   configure_nvim
+  configure_aws_cli
   configure_tmux
   configure_ssh
   configure_npm
