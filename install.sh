@@ -104,7 +104,7 @@ function configure_nvim(){
 function configure_aws_cli(){
   echo "Setup AWS cli & boto3"
   python3 -m venv ~/.venv/aws
-  . ~/.venv/neovim/bin/activate
+  . ~/.venv/aws/bin/activate
   pip3 install --upgrade awscli boto3 botocore
   deactivate
 }
