@@ -68,6 +68,11 @@ function configure_fish(){
   fish -c "fisher update"
 }
 
+function configure_ghostty(){
+  echo "Configure ghostty"
+  ln -fs "$( basedir )/ghostty/config" "$HOME/.config/ghostty/config"
+}
+
 function configure_git(){
   echo "Configuring git"
   ln -fs "$( basedir )/git/gitconfig" "$HOME/.gitconfig"
@@ -227,6 +232,7 @@ function ubuntu_install(){
 function nix_install(){
   create_base_directories
   configure_fish
+  configure_ghostty
   configure_git
   configure_vim
   configure_nvim
