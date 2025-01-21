@@ -162,7 +162,7 @@ function configure_rust(){
 function configure_node_version_manager(){
   echo "Configuring Node Version Manager (NVM)"
   # Note: This uses the nvm function with fish and Bass to work, see fish config
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 
   fish -c "nvm install v22"
   fish -c "nvm install v20"
