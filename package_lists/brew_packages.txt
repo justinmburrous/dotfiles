@@ -1,6 +1,7 @@
 ack
 the_silver_searcher
 fzf
+ripgrep
 v8
 curl
 fish
