@@ -70,6 +70,7 @@ function configure_fish(){
 
 function configure_ghostty(){
   echo "Configure ghostty"
+  mkdir -p "$( basedir )/ghostty"
   ln -fs "$( basedir )/ghostty/config" "$HOME/.config/ghostty/config"
 }
 
