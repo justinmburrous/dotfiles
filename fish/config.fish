@@ -2,11 +2,12 @@
 set -x EDITOR vim
 set PATH /opt/homebrew/sbin /opt/homebrew/bin $PATH # Used for M1 Mac
 set -x GOPATH ~/workspace/gopath
-set -x PATH $PATH ~/bin
-set -x PATH $PATH $GOPATH/bin
-set -x PATH $PATH ~/.npm-packages/bin
-set -x PATH $PATH ~/.cargo/bin
-set -x PATH $PATH ~/bin
+fish_add_path ~/bin
+fish_add_path $GOPATH/bin
+fish_add_path ~/.npm-packages/bin
+fish_add_path ~/.cargo/bin
+fish_add_path ~/bin
+fish_add_path ~/anaconda3/condabin
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 fish_add_path /opt/homebrew/opt/openjdk/bin
 set -x KUBE_EDITOR "nvim"
@@ -102,3 +103,17 @@ set -U fish_greeting "🐟"
 
 # CDK
 set -x JSII_SILENCE_WARNING_UNTESTED_NODE_VERSION 1
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /home/justinmburrous/anaconda3/bin/conda
+    eval /home/justinmburrous/anaconda3/bin/conda "shell.fish" "hook" $argv | source
+else
+    if test -f "/home/justinmburrous/anaconda3/etc/fish/conf.d/conda.fish"
+        . "/home/justinmburrous/anaconda3/etc/fish/conf.d/conda.fish"
+    else
+        set -x PATH "/home/justinmburrous/anaconda3/bin" $PATH
+    end
+end
+# <<< conda initialize <<<
+
