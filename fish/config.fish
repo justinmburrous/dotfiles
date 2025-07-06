@@ -8,6 +8,7 @@ fish_add_path ~/.npm-packages/bin
 fish_add_path ~/.cargo/bin
 fish_add_path ~/bin
 fish_add_path ~/anaconda3/condabin
+fish_add_path ~/.local/bin
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 fish_add_path /opt/homebrew/opt/openjdk/bin
 set -x KUBE_EDITOR "nvim"
