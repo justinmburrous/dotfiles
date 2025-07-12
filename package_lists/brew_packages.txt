@@ -1,4 +1,5 @@
 ack
+btop
 the_silver_searcher
 fzf
 ripgrep

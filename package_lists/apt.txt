@@ -3,6 +3,7 @@ nodejs
 ripgrep
 npm
 build-essential
+btop
 openssh-server
 sudo
 software-properties-common
