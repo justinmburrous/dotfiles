@@ -200,9 +200,7 @@ function arch_install(){
 
   echo "Checking $arch_packages list"
 
-  sudo pacman -Syu --noconfirm
-
-  pacman -S --noconfirm --needed - < $( basedir )/package_lists/arch.txt
+  sudo pacman -Syu --noconfirm --needed - < $( basedir )/package_lists/arch.txt
 
   echo "Done Arch install"
 }
