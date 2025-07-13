@@ -198,17 +198,13 @@ function brew_install(){
 function arch_install(){
   echo "Running Arch install"
 
-  sudo pacman -Syu
+  echo "Checking $arch_packages list"
 
-  echo "Checking $arch_packages  list"
-  arch_packages=$( basedir )/package_lists/arch.txt
+  sudo pacman -Syu --noconfirm
 
-  while read package_name; do
-    sudo pacman --noconfirm -S $package_name
-  done < $arch_packages
+  pacman -S --noconfirm --needed - < $( basedir )/package_lists/arch.txt
 
   echo "Done Arch install"
-
 }
 
 function ubuntu_install(){
