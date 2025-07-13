@@ -204,7 +204,7 @@ function arch_install(){
   arch_packages=$( basedir )/package_lists/arch.txt
 
   while read package_name; do
-    sudo pacman -S $package_name
+    sudo pacman --noconfirm -S $package_name
   done < $arch_packages
 
   echo "Done Arch install"
