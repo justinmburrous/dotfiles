@@ -195,6 +195,22 @@ function brew_install(){
 }
 
 
+function arch_install(){
+  echo "Running Arch install"
+
+  pacman -Syu
+
+  echo "Checking $arch_packages  list"
+  arch_packages=$( basedir )/package_lists/arch.txt
+
+  while read package_name; do
+    payman -S $package_name
+  done < $arch_packages
+
+  echo "Done Arch install"
+
+}
+
 function ubuntu_install(){
   echo "Running Ubuntu install"
 
@@ -248,8 +264,23 @@ function nix_install(){
 }
 
 if [ $SYSTEM_TYPE == "Linux" ]; then
-  ubuntu_install
-  nix_install
+  LINUX_OS_TYPE=$(grep "^NAME=" /etc/os-release | cut -d "=" -f2- | tr -d '"')
+
+  if [ $LINUX_OS_TYPE == "Ubuntu" ]; then
+    echo "Detected Ubuntu System"
+
+    ubuntu_install
+    nix_install
+  elif [ $LINUX_OS_TYPE == "Arch Linux" ]; then
+    echo "Detected Arch system"
+
+    arch_install
+    nix_install
+  else
+    echo "Unknown Linux type, exiting"
+    exit 1
+  fi
+
 elif [ $SYSTEM_TYPE == "Darwin" ]; then
   brew_install
   nix_install
