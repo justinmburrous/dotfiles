@@ -1,5 +1,6 @@
 nodejs
 ripgrep
+net-tools
 npm
 openssh
 sudo
