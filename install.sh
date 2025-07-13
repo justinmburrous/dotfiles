@@ -266,12 +266,12 @@ function nix_install(){
 if [ $SYSTEM_TYPE == "Linux" ]; then
   LINUX_OS_TYPE=$(grep "^NAME=" /etc/os-release | cut -d "=" -f2- | tr -d '"')
 
-  if [ $LINUX_OS_TYPE == "Ubuntu" ]; then
+  if [ "$LINUX_OS_TYPE" == "Ubuntu" ]; then
     echo "Detected Ubuntu System"
 
     ubuntu_install
     nix_install
-  elif [ $LINUX_OS_TYPE == "Arch Linux" ]; then
+  elif [ "$LINUX_OS_TYPE" == "Arch Linux" ]; then
     echo "Detected Arch system"
 
     arch_install
