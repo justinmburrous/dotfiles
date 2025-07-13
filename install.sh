@@ -208,36 +208,17 @@ function arch_install(){
 function ubuntu_install(){
   echo "Running Ubuntu install"
 
-  sudo apt-get update -y
-
   echo "installing PPAs list"
   ppa_list=$( basedir )/package_lists/ppa_list.txt
 
-  set +e
   while read ppa_repo; do
     echo "Adding $ppa_repo"
     sudo add-apt-repository $ppa_repo
   done < $ppa_list
 
-  sudo apt-get update -y
-
-  echo "checking $ubuntu_packages list"
-  ubuntu_packages=$( basedir )/package_lists/apt.txt
-
-  APT_INSTALLED_PACKAGES=$(apt list --installed)
-  while read package_name; do
-    echo $APT_INSTALLED_PACKAGES | grep -w $package_name > /dev/null
-    if [ $? -ne 0 ]; then
-      echo "Installing $package_name"
-      sudo apt-get install -y $package_name
-    else
-      echo "$package_name already installed"
-    fi
-  done < $ubuntu_packages
+  xargs sudo apt-get install -U -y < package_lists/apt.txt
 
   sudo apt-get upgrade -y
-
-  set -e
 }
 
 function nix_install(){
