@@ -34,3 +34,10 @@ firefox
 base
 linux
 firefox-developer-edition
+networkmanager
+ghostty
+gnome-desktop
+wireless-regdb
+wpa_supplicant
+iwd
+spotify-launcher

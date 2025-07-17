@@ -202,6 +202,10 @@ function arch_install(){
 
   sudo pacman -Syu --noconfirm --needed - < $( basedir )/package_lists/arch.txt
 
+
+  # Set wifi regdomain to US
+  sudo iw reg set US
+
   echo "Done Arch install"
 }
 
