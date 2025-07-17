@@ -27,3 +27,10 @@ unzip
 vim
 wget
 socat
+linux-firmware
+hyprland
+gnome
+firefox
+base
+linux
+firefox-developer-edition
