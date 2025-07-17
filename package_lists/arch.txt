@@ -1,4 +1,5 @@
 nodejs
+docker
 ripgrep
 net-tools
 inetutils
