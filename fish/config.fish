@@ -68,7 +68,7 @@ function git
     if string match -r 'github.com' $remote
       $gitbin clone -o 'github' "$argv[2]"
     else
-      $gitbin clone remote
+      $gitbin clone $remote
     end
 
   # Normal operations
