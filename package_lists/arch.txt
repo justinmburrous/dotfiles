@@ -1,4 +1,6 @@
 gnome-tweaks
+bluez
+bluez-utils
 nodejs
 docker
 ripgrep
