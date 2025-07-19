@@ -43,4 +43,5 @@ gnome-desktop
 wireless-regdb
 iwd
 spotify-launcher
-code
+man-db
+man-pages
