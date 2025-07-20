@@ -1,4 +1,6 @@
 dmidecode
+wofi
+cmake
 fwupd
 gnome-tweaks
 bluez
