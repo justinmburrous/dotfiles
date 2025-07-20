@@ -1,3 +1,5 @@
+dmidecode
+fwupd
 gnome-tweaks
 bluez
 bluez-utils
@@ -44,4 +46,5 @@ wireless-regdb
 iwd
 spotify-launcher
 man-db
+networkmanager
 man-pages
