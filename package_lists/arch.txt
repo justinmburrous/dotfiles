@@ -50,3 +50,5 @@ spotify-launcher
 man-db
 networkmanager
 man-pages
+usbutils
+fprintd
