@@ -12,6 +12,7 @@ function basedir(){
 
 SYSTEM_TYPE=$(uname)
 ARCH_TYPE="$(uname -p)"
+HOSTNAME="$(hostname)"
 
 source ./common/common.sh
 source ./common/dev_tools.sh
@@ -27,11 +28,30 @@ if [ $SYSTEM_TYPE == "Linux" ]; then
     source ./common/ubuntu.sh
     ubuntu_install
 
+    create_base_directories
+    install_utils
+    install_dev_tools
+    install_scripts
+
   elif [ "$LINUX_OS_TYPE" == "Arch Linux" ]; then
 
     echo "Detected Arch system"
     source ./common/arch.sh
-    arch_install
+
+    if [ "$HOSTNAME" == "archserver" ]; then
+
+      arch_server_install
+
+    else
+
+      arch_install
+
+      create_base_directories
+      install_utils
+      install_dev_tools
+      install_scripts
+
+    fi
 
   else
 
@@ -45,6 +65,11 @@ elif [ $SYSTEM_TYPE == "Darwin" ]; then
   source ./common/osx.sh
   brew_install
 
+  create_base_directories
+  install_utils
+  install_dev_tools
+  install_scripts
+
 else
 
   echo "Unknown uname $SYSTEM_TYPE"
@@ -54,9 +79,5 @@ fi
 
 echo "installing common functions"
 
-create_base_directories
-install_utils
-install_dev_tools
-install_scripts
 
 echo "Done!"

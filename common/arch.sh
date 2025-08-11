@@ -1,16 +1,27 @@
-function arch_install(){
-  echo "Running Arch install"
+function arch_server_install(){
+  echo "Running Arch (server) install"
 
   echo "Checking $arch_packages list"
 
-  sudo pacman -Syu --noconfirm --needed - < $( basedir )/package_lists/arch.txt
+  sudo pacman -Syu --noconfirm --needed - < $( basedir )/package_lists/arch_common.txt
+  sudo pacman -Syu --noconfirm --needed - < $( basedir )/package_lists/arch_server.txt
+  
+  echo "Done Arch (server) install"
+}
 
+function arch_install(){
+  echo "Running Arch Install"
+
+  echo "Checking $arch_packages list"
+
+  sudo pacman -Syu --noconfirm --needed - < $( basedir )/package_lists/arch_common.txt
+  sudo pacman -Syu --noconfirm --needed - < $( basedir )/package_lists/arch_desktop.txt
+
+  hyprland_setup
 
   # Set wifi regdomain to US
   sudo iw reg set US
 
-  hyprland_setup
-  
   echo "Done Arch install"
 }
 
