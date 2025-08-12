@@ -1,4 +1,7 @@
 dmidecode
+man-pages
+man-db
+less
 cmake
 fwupd
 docker

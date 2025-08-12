@@ -15,7 +15,6 @@ neovim
 graphviz
 wofi
 nodejs
-less
 fish
 jq
 tmux
@@ -24,9 +23,7 @@ bluez
 bluez-utils
 obsidian
 fprintd
-man-pages
 usbutils
 spotify-launcher
 wireless-regdb
-man-db
 gnome-desktop
