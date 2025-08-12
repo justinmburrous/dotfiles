@@ -27,3 +27,4 @@ usbutils
 spotify-launcher
 wireless-regdb
 gnome-desktop
+signal-desktop
