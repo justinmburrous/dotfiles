@@ -1,34 +1,34 @@
-ack
-btop
-the_silver_searcher
-fzf
-ripgrep
-v8
-curl
-fish
-fossil
-fpp
-python@3
-wget
-git
-gnupg
-go
-mosh
-node
-graphviz
-htop
-jq
-vim
-neovim
-nmap
-pstree
-tree
-python3
-sl
-tmux
-tree
-watch
-wget
-gh
-ruby
-cmake
+brew 'ack'
+brew 'btop'
+brew 'the_silver_searcher'
+brew 'fzf'
+brew 'ripgrep'
+brew 'v8'
+brew 'curl'
+brew 'fish'
+brew 'fossil'
+brew 'fpp'
+brew 'python@3'
+brew 'wget'
+brew 'git'
+brew 'gnupg'
+brew 'go'
+brew 'mosh'
+brew 'node'
+brew 'graphviz'
+brew 'htop'
+brew 'jq'
+brew 'vim'
+brew 'neovim'
+brew 'nmap'
+brew 'pstree'
+brew 'tree'
+brew 'python3'
+brew 'sl'
+brew 'tmux'
+brew 'tree'
+brew 'watch'
+brew 'wget'
+brew 'gh'
+brew 'ruby'
+brew 'cmake'
