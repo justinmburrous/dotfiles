@@ -7,6 +7,17 @@ swaylock
 ripgrep
 npm
 hyprland
+hypridle
+hyprlock
+hyprutils
+hyprgraphics
+hyprpicker
+hyprpicker
+hyprpolkitagent
+hyprland-qt-support
+hyprcursor
+hyprlang
+hyprland-qtutils
 ghostty
 sl
 python

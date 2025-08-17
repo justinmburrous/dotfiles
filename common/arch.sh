@@ -28,7 +28,10 @@ function arch_install(){
 function hyprland_setup(){
   echo "Configuring Hyprland"
 
+  mkdir -p ~/.config/hypr
   ln -fs "$( basedir )/hyprland/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"
+  ln -fs "$( basedir )/hyprland/hypridle.conf" "$HOME/.config/hypr/hypridle.conf"
+  ln -fs "$( basedir )/hyprland/hyprlock.conf" "$HOME/.config/hypr/hyprlock.conf"
 
   echo "Hyprland config done"
 }
