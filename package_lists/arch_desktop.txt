@@ -18,6 +18,8 @@ hyprland-qt-support
 hyprcursor
 hyprlang
 hyprland-qtutils
+gnome-keyring
+seahorse
 ghostty
 sl
 python
