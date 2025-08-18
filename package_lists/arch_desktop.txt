@@ -25,6 +25,7 @@ sl
 python
 nmap
 neovim
+wireguard-tools
 graphviz
 wofi
 nodejs
