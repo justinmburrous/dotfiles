@@ -25,3 +25,4 @@ base
 linux
 linux-firmware
 networkmanager
+tpm2-tss
