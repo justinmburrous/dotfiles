@@ -1,4 +1,5 @@
 gnome-tweaks
+networkmanager
 iwd
 firefox-developer-edition
 firefox
