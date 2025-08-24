@@ -23,6 +23,10 @@ function arch_install(){
 
   sudo pacman -Syu --noconfirm --needed - < $( basedir )/package_lists/arch_desktop.txt
 
+  echo "Starting services"
+  sudo systemctl start NetworkManager.service
+  sudo systemctl enable NetworkManager.service
+
   hyprland_setup
 
   waybar_setup
