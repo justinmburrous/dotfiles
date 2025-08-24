@@ -4,7 +4,6 @@ iwd
 firefox-developer-edition
 firefox
 gnome
-swaylock
 ripgrep
 npm
 hyprland
@@ -43,3 +42,4 @@ spotify-launcher
 wireless-regdb
 gnome-desktop
 signal-desktop
+qemu-full
