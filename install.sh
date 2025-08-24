@@ -12,7 +12,6 @@ function basedir(){
 
 SYSTEM_TYPE=$(uname)
 ARCH_TYPE="$(uname -p)"
-HOSTNAME="$(hostname)"
 
 source ./common/common.sh
 source ./common/dev_tools.sh
@@ -37,6 +36,11 @@ if [ $SYSTEM_TYPE == "Linux" ]; then
 
     echo "Detected Arch system"
     source ./common/arch.sh
+
+    arch_common_install
+
+    HOSTNAME="$(hostname)"
+
 
     if [ "$HOSTNAME" == "archserver" ]; then
 

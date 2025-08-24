@@ -1,9 +1,16 @@
+function arch_common_install(){
+  echo "Running Arch (common) install"
+
+  sudo pacman -Syu --noconfirm --needed - < $( basedir )/package_lists/arch_common.txt
+
+  echo "Done Arch (common) install"
+}
+
 function arch_server_install(){
   echo "Running Arch (server) install"
 
   echo "Checking $arch_packages list"
 
-  sudo pacman -Syu --noconfirm --needed - < $( basedir )/package_lists/arch_common.txt
   sudo pacman -Syu --noconfirm --needed - < $( basedir )/package_lists/arch_server.txt
   
   echo "Done Arch (server) install"
@@ -14,7 +21,6 @@ function arch_install(){
 
   echo "Checking $arch_packages list"
 
-  sudo pacman -Syu --noconfirm --needed - < $( basedir )/package_lists/arch_common.txt
   sudo pacman -Syu --noconfirm --needed - < $( basedir )/package_lists/arch_desktop.txt
 
   hyprland_setup
