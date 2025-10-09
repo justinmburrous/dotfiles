@@ -25,10 +25,22 @@ function arch_install(){
 
   hyprland_setup
 
+  waybar_setup
+
   # Set wifi regdomain to US
   sudo iw reg set US
 
   echo "Done Arch install"
+}
+
+function waybar_setup(){
+  echo "Configuring Waybar"
+
+  mkdir -p ~/.config/hypr
+  ln -fs "$( basedir )/waybar/config.jsonc" "$HOME/.config/waybar/config.jsonc"
+  ln -fs "$( basedir )/waybar/style.css" "$HOME/.config/waybar/style.css"
+
+  echo "Waybar config done"
 }
 
 function hyprland_setup(){
