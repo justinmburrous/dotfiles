@@ -36,7 +36,7 @@ function arch_install(){
 function waybar_setup(){
   echo "Configuring Waybar"
 
-  mkdir -p ~/.config/hypr
+  mkdir -p ~/.config/waybar
   ln -fs "$( basedir )/waybar/config.jsonc" "$HOME/.config/waybar/config.jsonc"
   ln -fs "$( basedir )/waybar/style.css" "$HOME/.config/waybar/style.css"
 
