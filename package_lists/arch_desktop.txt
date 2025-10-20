@@ -1,6 +1,7 @@
 gnome-tweaks
 networkmanager
 iwd
+impala
 firefox-developer-edition
 firefox
 waybar
