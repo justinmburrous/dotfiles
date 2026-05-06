@@ -11,6 +11,7 @@ fish_add_path ~/anaconda3/condabin
 fish_add_path ~/.local/bin
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 fish_add_path /opt/homebrew/opt/openjdk/bin
+fish_add_path ~/.local/bin/claude
 set -x KUBE_EDITOR "nvim"
 set -gx GPG_TTY (tty)
 
@@ -36,6 +37,7 @@ alias gitb="git branch"
 alias gits="git status"
 alias gitl="git log --pretty=oneline"
 alias k="kubectl"
+alias c="claude"
 
 # Functions
 function fish_prompt
