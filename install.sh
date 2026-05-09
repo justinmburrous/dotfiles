@@ -17,71 +17,100 @@ source ./common/common.sh
 source ./common/dev_tools.sh
 source ./common/utils.sh
 
-if [ $SYSTEM_TYPE == "Linux" ]; then
+# if [ $SYSTEM_TYPE == "Linux" ]; then
 
-  LINUX_OS_TYPE=$(grep "^NAME=" /etc/os-release | cut -d "=" -f2- | tr -d '"')
+#   LINUX_OS_TYPE=$(grep "^NAME=" /etc/os-release | cut -d "=" -f2- | tr -d '"')
 
-  if [ "$LINUX_OS_TYPE" == "Ubuntu" ]; then
+#   if [ "$LINUX_OS_TYPE" == "Ubuntu" ]; then
 
-    echo "Detected Ubuntu System"
-    source ./common/ubuntu.sh
-    ubuntu_install
+#     echo "Detected Ubuntu System"
+#     source ./common/ubuntu.sh
+#     ubuntu_install
 
-    create_base_directories
-    install_utils
-    install_dev_tools
-    install_scripts
+#     create_base_directories
+#     install_utils
+#     install_dev_tools
+#     install_scripts
 
-  elif [ "$LINUX_OS_TYPE" == "Arch Linux" ]; then
+#   elif [ "$LINUX_OS_TYPE" == "Arch Linux" ]; then
 
-    echo "Detected Arch system"
-    source ./common/arch.sh
+#     echo "Detected Arch system"
+#     source ./common/arch.sh
 
-    arch_common_install
+#     arch_common_install
 
-    HOSTNAME="$(hostname)"
+#     HOSTNAME="$(hostname)"
 
 
-    if [ "$HOSTNAME" == "archserver" ]; then
+#     if [ "$HOSTNAME" == "archserver" ]; then
 
-      arch_server_install
+#       arch_server_install
 
-    else
+#     else
 
-      arch_install
+#       arch_install
 
-      create_base_directories
-      install_utils
-      install_dev_tools
-      install_scripts
+#       create_base_directories
+#       install_utils
+#       install_dev_tools
+#       install_scripts
 
-    fi
+#     fi
 
-  else
+#   else
 
-    echo "Unknown Linux type, exiting"
-    exit 1
+#     echo "Unknown Linux type, exiting"
+#     exit 1
 
-  fi
+#   fi
 
-elif [ $SYSTEM_TYPE == "Darwin" ]; then
+# elif [ $SYSTEM_TYPE == "Darwin" ]; then
 
-  source ./common/osx.sh
-  brew_install
+#   source ./common/osx.sh
+#   brew_install
 
-  create_base_directories
-  install_utils
-  install_dev_tools
-  install_scripts
+#   create_base_directories
+#   install_utils
+#   install_dev_tools
+#   install_scripts
 
-else
+# else
 
-  echo "Unknown uname $SYSTEM_TYPE"
-  exit 1
+#   echo "Unknown uname $SYSTEM_TYPE"
+#   exit 1
 
-fi
+# fi
 
 echo "installing common functions"
 
+EXTRAS_FILE="$( basedir )/extras.json"
+
+if [ ! -f "$EXTRAS_FILE" ]; then
+  echo "extras.json does not exist at $EXTRAS_FILE, skipping extra repos"
+else
+  echo "Found extras.json, processing extra repos"
+
+  mkdir -p "$HOME/workspace"
+
+  jq -c '.[]' "$EXTRAS_FILE" | while read -r entry; do
+    repo=$(echo "$entry" | jq -r '.repo')
+    directory=$(echo "$entry" | jq -r '.directory')
+    target="$HOME/workspace/$directory"
+
+    if [ -d "$target" ]; then
+      echo "$target already exists, skipping clone"
+    else
+      echo "Cloning $repo into $target"
+      git clone "$repo" "$target"
+    fi
+
+    if [ -f "$target/install.sh" ]; then
+      echo "Running $target/install.sh"
+      ( cd "$target" && ./install.sh )
+    else
+      echo "No install.sh found in $target, skipping"
+    fi
+  done
+fi
 
 echo "Done!"
