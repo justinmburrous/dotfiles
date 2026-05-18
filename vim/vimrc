@@ -13,11 +13,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'miyakogi/conoline.vim'
-Plugin 'fatih/vim-go'
 Plugin 'scrooloose/nerdtree'
-Plugin 'rust-lang/rust.vim'
-Plugin 'ycm-core/YouCompleteMe'
-Plugin 'pangloss/vim-javascript'
 
 call vundle#end()
 filetype plugin indent on
