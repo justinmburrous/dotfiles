@@ -118,7 +118,11 @@ function gpg-agent
   set cached (gpg-connect-agent "keyinfo $signing_keygrip" /bye 2>/dev/null | awk '/^S KEYINFO/{print $7}')
   if test "$cached" != "1"
     set passphrase (op item get 'GPG Passphrase' --fields label=password --reveal)
-    echo $passphrase | /usr/lib/gnupg2/gpg-preset-passphrase --preset $signing_keygrip
+    if test (uname) = Darwin
+      echo $passphrase | /opt/homebrew/opt/gnupg/libexec/gpg-preset-passphrase --preset $signing_keygrip
+    else
+      echo $passphrase | /usr/lib/gnupg2/gpg-preset-passphrase --preset $signing_keygrip
+    end
   end
 end
 
