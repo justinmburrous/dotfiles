@@ -1,19 +1,21 @@
 #Env
-set -x EDITOR vim
-set PATH /opt/homebrew/sbin /opt/homebrew/bin $PATH # Used for M1 Mac
-set -x GOPATH ~/workspace/gopath
+
 fish_add_path ~/bin
-fish_add_path $GOPATH/bin
+fish_add_path /opt/homebrew/sbin
+fish_add_path /opt/homebrew/bin
 fish_add_path ~/.npm-packages/bin
 fish_add_path ~/.cargo/bin
 fish_add_path ~/bin
 fish_add_path ~/anaconda3/condabin
 fish_add_path ~/.local/bin
-set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 fish_add_path /opt/homebrew/opt/openjdk/bin
 fish_add_path ~/.local/bin/claude
-set -x KUBE_EDITOR "nvim"
+
+# Misc Engs
+
 set -gx GPG_TTY (tty)
+
+set -x EDITOR vim
 
 # Platform specific config.
 switch (uname)
@@ -44,6 +46,7 @@ function fish_prompt
   echo -e $USER"@"(hostname)":"(basename $PWD) "\n> "
 end
 
+# Because we can't have nice things
 function clear
   if test (random 0 1000) = 0
     sl
