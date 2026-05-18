@@ -1,5 +1,6 @@
 function install_utils(){
   configure_ssh
+  configure_gpg
   configure_git
   configure_fish 
   configure_ghostty
@@ -91,4 +92,9 @@ function configure_ssh(){
   echo "Configuring SSH"
   mkdir -p "$HOME/.ssh/"
   ln -fs "$( basedir )/ssh/config" "$HOME/.ssh/config"
+}
+
+function configure_gpg(){
+  echo "Configure GPG"
+  ln -fs "$( basedir )/gpg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
 }
