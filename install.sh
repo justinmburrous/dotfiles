@@ -83,18 +83,16 @@ fi
 
 echo "installing common functions"
 
-EXTRAS_FILE="$( basedir )/extras.json"
+EXTRAS_FILE="$( basedir )/extras.csv"
 
 if [ ! -f "$EXTRAS_FILE" ]; then
-  echo "extras.json does not exist at $EXTRAS_FILE, skipping extra repos"
+  echo "extras.csv does not exist at $EXTRAS_FILE, skipping extra repos"
 else
-  echo "Found extras.json, processing extra repos"
+  echo "Found extras.csv, processing extra repos"
 
   mkdir -p "$HOME/workspace"
 
-  jq -c '.[]' "$EXTRAS_FILE" | while read -r entry; do
-    repo=$(echo "$entry" | jq -r '.repo')
-    directory=$(echo "$entry" | jq -r '.directory')
+  while IFS=',' read -r directory repo; do
     target="$HOME/workspace/$directory"
 
     if [ -d "$target" ]; then
@@ -110,7 +108,7 @@ else
     else
       echo "No install.sh found in $target, skipping"
     fi
-  done
+  done < "$EXTRAS_FILE"
 fi
 
 echo "Done!"
