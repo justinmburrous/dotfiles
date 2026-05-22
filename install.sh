@@ -96,7 +96,13 @@ else
     target="$HOME/workspace/$directory"
 
     if [ -d "$target" ]; then
-      echo "$target already exists, skipping clone"
+      echo "$target already exists, checking for uncommitted changes"
+      if ! git -C "$target" diff --quiet || ! git -C "$target" diff --cached --quiet; then
+        echo "ERROR: $target has uncommitted changes, aborting"
+        exit 1
+      fi
+      echo "Pulling latest changes in $target"
+      git -C "$target" pull --rebase
     else
       echo "Cloning $repo into $target"
       git clone "$repo" "$target"
