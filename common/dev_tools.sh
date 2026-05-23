@@ -1,7 +1,6 @@
 function install_dev_tools(){
   configure_vim
   configure_nvim
-  configure_aws_cli
   configure_npm
   configure_rust
 }
@@ -30,14 +29,6 @@ function configure_nvim(){
   python3 -m venv ~/.venv/neovim
   . ~/.venv/neovim/bin/activate
   pip3 install --upgrade pynvim
-  deactivate
-}
-
-function configure_aws_cli(){
-  echo "Setup AWS cli & boto3"
-  python3 -m venv ~/.venv/aws
-  . ~/.venv/aws/bin/activate
-  pip3 install --upgrade awscli boto3 botocore
   deactivate
 }
 
