@@ -17,7 +17,7 @@ function configure_vim(){
 
   vim +PluginInstall +qall
   vim +PluginUpdate +qall
-  vim +PluginClean +qall
+  vim +PluginClean! +qall
 }
 
 function configure_nvim(){

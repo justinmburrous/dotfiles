@@ -3,7 +3,7 @@
 	email = justinmburrous@gmail.com
 	signingkey = 6F24BCA624F016BE!
 [core]
-	excludesfile = /Users/justinmburrous/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	editor = nvim
 [init]
 	defaultBranch = main
@@ -12,5 +12,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[pull]
+	rebase = true
 [commit]
 	gpgsign = true

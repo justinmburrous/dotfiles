@@ -60,7 +60,7 @@ if [ $SYSTEM_TYPE == "Linux" ]; then
   if [ "$LINUX_OS_TYPE" == "Ubuntu" ]; then
 
     echo "Detected Ubuntu System"
-    source ./common/ubuntu.sh
+    source "$DOTFILE_BASE_DIR/common/ubuntu.sh"
     ubuntu_install
 
     create_base_directories
@@ -71,7 +71,7 @@ if [ $SYSTEM_TYPE == "Linux" ]; then
   elif [ "$LINUX_OS_TYPE" == "Arch Linux" ]; then
 
     echo "Detected Arch system"
-    source ./common/arch.sh
+    source "$DOTFILE_BASE_DIR/common/arch.sh"
 
     arch_common_install
 
