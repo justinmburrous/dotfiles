@@ -96,5 +96,7 @@ function configure_ssh(){
 
 function configure_gpg(){
   echo "Configure GPG"
+  mkdir -p "$HOME/.gnupg"
+  chmod 700 "$HOME/.gnupg"
   ln -fs "$( basedir )/gpg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
 }
