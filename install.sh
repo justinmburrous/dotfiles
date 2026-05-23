@@ -18,6 +18,41 @@ source "$DOTFILE_BASE_DIR/common/common.sh"
 source "$DOTFILE_BASE_DIR/common/dev_tools.sh"
 source "$DOTFILE_BASE_DIR/common/utils.sh"
 
+FORCE=false
+while getopts "f" opt; do
+  case $opt in
+    f) FORCE=true ;;
+    *) echo "Usage: $0 [-f]"; exit 1 ;;
+  esac
+done
+
+CURRENT_BRANCH=$(git -C "$DOTFILE_BASE_DIR" rev-parse --abbrev-ref HEAD)
+if [ "$CURRENT_BRANCH" != "main" ]; then
+  if [ "$FORCE" = true ]; then
+    echo "WARNING: Bypassing branch check — not on main (on '$CURRENT_BRANCH')"
+  else
+    echo "ERROR: You are not on \`main\` you must use \`-f\`"
+    exit 1
+  fi
+fi
+
+REMOTE_NAME=$(git -C "$DOTFILE_BASE_DIR" remote | grep -E '^(origin|github)$' | head -1)
+if [ -z "$REMOTE_NAME" ]; then
+  echo "ERROR: Could not find a remote named 'origin' or 'github'"
+  exit 1
+fi
+git -C "$DOTFILE_BASE_DIR" fetch "$REMOTE_NAME" main --quiet
+LOCAL=$(git -C "$DOTFILE_BASE_DIR" rev-parse HEAD)
+REMOTE=$(git -C "$DOTFILE_BASE_DIR" rev-parse "$REMOTE_NAME/main")
+if [ "$LOCAL" != "$REMOTE" ]; then
+  if [ "$FORCE" = true ]; then
+    echo "WARNING: Bypassing remote sync check — local is not up to date with origin/main"
+  else
+    echo "ERROR: Local repo is not up to date with origin/main. Please pull before installing, or use \`-f\` to bypass."
+    exit 1
+  fi
+fi
+
 if [ $SYSTEM_TYPE == "Linux" ]; then
 
   LINUX_OS_TYPE=$(grep "^NAME=" /etc/os-release | cut -d "=" -f2- | tr -d '"')
