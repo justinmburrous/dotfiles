@@ -5,7 +5,6 @@ fish_add_path /opt/homebrew/sbin
 fish_add_path /opt/homebrew/bin
 fish_add_path ~/.npm-packages/bin
 fish_add_path ~/.cargo/bin
-fish_add_path ~/bin
 fish_add_path ~/anaconda3/condabin
 fish_add_path ~/.local/bin
 fish_add_path /opt/homebrew/opt/openjdk/bin
