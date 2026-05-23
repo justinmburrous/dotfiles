@@ -51,8 +51,6 @@ function configure_npm(){
 
   fish -c "nvm install v22"
   fish -c "nvm install v20"
-  fish -c "nvm install v18"
-  fish -c "nvm install v16"
 }
 
 function configure_rust(){
