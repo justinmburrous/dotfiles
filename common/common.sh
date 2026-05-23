@@ -6,8 +6,13 @@ function create_base_directories(){
 
 function install_scripts(){
   echo "Installing scripts"
-  for f in ./scripts/*; do
-    ln -fs "$( basedir )/scripts/$(basename $f)" "$HOME/bin/$(basename $f)"
+  local scripts_dir="$( basedir )/scripts"
+  if [ ! -d "$scripts_dir" ]; then
+    echo "No scripts directory found, skipping"
+    return 0
+  fi
+  for f in "$scripts_dir"/*; do
+    ln -fs "$f" "$HOME/bin/$(basename "$f")"
   done
 }
 
