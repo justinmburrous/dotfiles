@@ -47,7 +47,7 @@ function configure_fish(){
   fi
 
   # Install fisher
-  fish -c "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
+  fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/HEAD/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
 
   # Install other plugins
   fish -c "fisher install edc/bass"
