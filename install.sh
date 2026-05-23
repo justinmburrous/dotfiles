@@ -5,17 +5,18 @@ set -e
 
 echo "Starting install"
 
+DOTFILE_BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+
 function basedir(){
-  dotfile_base_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-  echo $dotfile_base_dir
+  echo "$DOTFILE_BASE_DIR"
 }
 
 SYSTEM_TYPE=$(uname)
 ARCH_TYPE="$(uname -p)"
 
-source ./common/common.sh
-source ./common/dev_tools.sh
-source ./common/utils.sh
+source "$DOTFILE_BASE_DIR/common/common.sh"
+source "$DOTFILE_BASE_DIR/common/dev_tools.sh"
+source "$DOTFILE_BASE_DIR/common/utils.sh"
 
 if [ $SYSTEM_TYPE == "Linux" ]; then
 

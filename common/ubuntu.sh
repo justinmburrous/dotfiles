@@ -6,10 +6,10 @@ function ubuntu_install(){
 
   while read ppa_repo; do
     echo "Adding $ppa_repo"
-    sudo add-apt-repository $ppa_repo
+    sudo add-apt-repository "$ppa_repo"
   done < $ppa_list
 
-  xargs sudo apt-get install -U -y < package_lists/apt.txt
+  xargs sudo apt-get install -U -y < "$( basedir )/package_lists/apt.txt"
 
   sudo apt-get upgrade -y
 }
