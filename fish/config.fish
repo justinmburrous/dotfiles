@@ -109,25 +109,6 @@ set -U fish_greeting "🐟"
 # CDK
 set -x JSII_SILENCE_WARNING_UNTESTED_NODE_VERSION 1
 
-# GPG agent
-
-function gpg-agent
-  gpg-connect-agent /bye >/dev/null 2>&1
-  set signing_keygrip E75DD93BB9F3E8B634402025FACB32373EA5D57D
-  set cached (gpg-connect-agent "keyinfo $signing_keygrip" /bye 2>/dev/null | awk '/^S KEYINFO/{print $7}')
-  if test "$cached" != "1"
-    set passphrase (op item get 'GPG Passphrase' --fields label=password --reveal)
-    if test (uname) = Darwin
-      echo $passphrase | /opt/homebrew/opt/gnupg/libexec/gpg-preset-passphrase --preset $signing_keygrip
-    else
-      echo $passphrase | /usr/lib/gnupg2/gpg-preset-passphrase --preset $signing_keygrip
-    end
-  end
-end
-
-gpg-agent
-
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 if test -f "$HOME/anaconda3/bin/conda"
